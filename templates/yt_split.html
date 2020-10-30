@@ -1,0 +1,101 @@
+{% extends "layout.html" %}
+{% block content %}
+<body onload="update_audio()"/>
+<body onload="reminder()"/>
+
+<div id="youtube_source_grid">
+    <query>        
+        <h4 class="text-center mb-3">Separe outra música:</h4>
+        <p hidden id="reminder" class="text-center mb-3" style="color:#404040">Por favor aguarde, esse processo pode levar alguns minutos...</p>
+        <form action="yt_split" method="post">
+            <div class="input-group mb-3">
+                <input type="text" name="ytLink" class="form-control" placeholder="Insira um link do YouTube...">
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-outline-secondary sep">Submit</button>
+                </div>
+            </div>
+        </form>   
+        <form action="wav_split" method="post" enctype="multipart/form-data">
+            <div class="input-group">
+              <div class="custom-file">
+                  <input id="fileButton" type="file" name="file" accept="audio/wav" class="custom-file-input"> 
+                  <span  id="fileText" class="custom-file-label"> Insira um arquivo .wav... </span>
+                </div>
+                <div class="input-group-append">
+                    <button type="submit" class="sep btn btn-outline-secondary">Submit</button>
+                </div>
+            </div>
+        </form>
+    </query>
+    <original_content> 
+        <div class="videoWrapper">
+            <iframe width="700" height="393" src= {{ url }} frameborder="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <h2 class="mt-3"> {{ video_title }}</h2>
+    </original_content>
+    <div id="sprt_content">
+        <sprt_title>
+            <h3 class="text-center">Faixas separadas:</h3>
+        </sprt_title>
+        <checkArea>
+            <br> 
+            <p class="ml-4 pt-3 mb-n1"> Combinação: </p>
+            <br> <br>
+            <div class="ml-3 pb-3">
+                <input type="checkbox" id="vocalC">
+                <label for="vocalC">Vocais</label>
+            </div>
+            <br>
+            <div class="ml-3 pb-3">
+                <input type="checkbox" id="drumsC">
+                <label for="drumsC">Percussão</label>
+            </div>
+            <br>
+            <div class="ml-1 mb-3">
+                <input type="checkbox" id="bassC">
+                <label for="bassC">Baixo</label>
+            </div>
+            <br>
+            <div class="ml-3 pb-3">
+                <input type="checkbox" id="otherC">
+                <label for="otherC">Acompanhamentos</label>
+            </div>
+
+            
+        </checkArea>
+        <audioPlay id = "allAudios">
+            <br>
+            
+            
+            <audio controls id="_0000" src="../static/ext/music-{{key}}/0000.wav" style="display: none;" class="row mb-3"></audio>
+            <audio controls id="_0001" src="../static/ext/music-{{key}}}/0001.wav" style="display: none;" class="row mb-3"></audio>
+            <audio controls id="_0010" src="../static/ext/music-{{key}}/0010.wav" style="display: none;" class="row mb-3"></audio>
+            <audio controls id="_0011" src="../static/ext/music-{{key}}/0011.wav" style="display: none;" class="row mb-3"></audio>
+            
+            <audio controls id="_0100" src="../static/ext/music-{{key}}/0100.wav" style="display: none;" class="row mb-3"></audio>
+            <audio controls id="_0101" src="../static/ext/music-{{key}}/0101.wav" style="display: none;" class="row mb-3"></audio>
+            <audio controls id="_0110" src="../static/ext/music-{{key}}/0110.wav" style="display: none;" class="row mb-3"></audio>
+            <audio controls id="_0111" src="../static/ext/music-{{key}}/0111.wav" style="display: none;" class="row mb-3"></audio>
+            
+            <audio controls id="_1000" src="../static/ext/music-{{key}}/1000.wav" style="display: none;" class="row mb-3"></audio>
+            <audio controls id="_1001" src="../static/ext/music-{{key}}/1001.wav" style="display: none;" class="row mb-3"></audio>
+            <audio controls id="_1010" src="../static/ext/music-{{key}}/1010.wav" style="display: none;" class="row mb-3"></audio>
+            <audio controls id="_1011" src="../static/ext/music-{{key}}/1011.wav" style="display: none;" class="row mb-3"></audio>
+            
+            <audio controls id="_1100" src="../static/ext/music-{{key}}/1100.wav" style="display: none;" class="row mb-3"></audio>
+            <audio controls id="_1101" src="../static/ext/music-{{key}}/1101.wav" style="display: none;" class="row mb-3"></audio>
+            <audio controls id="_1110" src="../static/ext/music-{{key}}/1110.wav" style="display: none;" class="row mb-3"></audio>
+            <audio controls id="_1111" src="../static/ext/music-{{key}}/1111.wav" style="display: none;" class="row mb-3"></audio>
+
+            <audio controls src="../static/ext/music-{{key}}/1000.wav" style="width: 300px;" class="row mb-3"></audio>
+            <audio controls src="../static/ext/music-{{key}}/0100.wav" style="width: 300px;" class="row mb-3"></audio>
+            <audio controls src="../static/ext/music-{{key}}/0010.wav" style="width: 300px;" class="row mb-3"></audio>
+            <audio controls src="../static/ext/music-{{key}}/0001.wav" style="width: 300px;" class="row mb-3"></audio>
+            
+        </audioPlay>
+    </div>
+</div>
+
+
+
+{% endblock %}

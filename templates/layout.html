@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+    <html>
+        
+        <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+            <!-- Bootstrap-->
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <!-- Fonts -->
+            <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600"      rel="stylesheet" type="text/css">
+            <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,500,600" rel="stylesheet" type="text/css">
+            <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600"   rel="stylesheet" type="text/css">
+
+            <!-- Style and icon -->
+            <link rel="stylesheet "type="text/css" href="../static/style.css"  >
+            <link rel = "icon" href ="../static/img/midas_icon.png" type = "image/x-icon">             
+
+            {% if title %}
+            <title>{{ title }}</title>
+            {% else %}
+            <title>Flask Blog</title>
+            {% endif %}
+        </head>
+        
+        <body>
+            
+            <nav class="navbar navbar-expand-sm fixed-top" style="background-color: #303030">
+                <div class="container">
+                    <a class="navbar-brand" href="/">Página inicial</a>
+                    <a class="nav-item nav-link" href="/about">Sobre</a>
+           
+                    <div class="collapse navbar-collapse" id="navbarToggle">
+                        <div class="navbar-nav mr-auto"></div>             
+                        <div class="navbar-nav"></div>
+                    </div>
+                </div>
+            </nav>
+            {% block content %}
+            {% endblock %}
+            
+            
+            
+        </body>
+        {% assets "main_js" %}
+        <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+        {% endassets %}
+        
+        </html>

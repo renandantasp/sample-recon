@@ -1,0 +1,250 @@
+:root{
+  --white: #eeeeee;
+  --black: #303030;
+  --gray: #404040;
+  --yellow: #ffcb00;
+}
+
+
+h2{
+  font-family: Roboto Slab;
+  font-weight: 600;
+  color: var(--black);
+}
+h4{
+  font-family: Roboto Slab;
+  font-weight: 500;
+  color: var(--black);
+}
+p{
+  font-family: Open Sans;
+  font-weight: 500;
+  color: var(--gray);
+}
+
+.bg-primary, .navbar-brand, .nav-item {
+  font-family: Roboto;
+  color: var(--yellow);
+}
+.navbar-brand:hover, .nav-item:hover{
+  font-family: Roboto;
+  color: var(--white);
+}
+
+
+
+/************** GRIDS **************/
+
+/******* YOUTUBE SOURCE SEPARATION GRID *******/
+#youtube_source_grid{
+  display: grid;
+  grid-template-columns: 1fr 80% 1fr;
+  grid-template-rows: 60px repeat(3, minmax(50px,auto));
+  grid-column-gap: 20px;
+  grid-row-gap: 40px;
+  margin: 0 auto;
+  grid-template-areas: 
+  ". . ."
+  ". query ."
+  ". original_content ."
+  ". sprt_content ."
+  ;
+  grid-auto-rows: 100px;
+}
+
+@media screen and (min-width: 1440px){
+  #youtube_source_grid{
+    display: grid;
+    grid-template-columns: 1fr 40% 40% 1fr;
+    grid-template-rows: 60px repeat(2, minmax(50px,auto));
+    grid-column-gap: 20px;
+    grid-row-gap: 40px;
+    margin: 0 auto;
+    grid-template-areas: 
+    ". . . ."
+    ". query query ."
+    ". original_content sprt_content ."
+    ;
+    grid-auto-rows: 100px;
+  }
+}
+
+/******* FILE SOURCE SEPARATION GRID *******/
+
+#file_source_grid{
+  display: grid;
+  grid-template-columns: 1fr 80% 1fr;
+  grid-template-rows: 60px repeat(2, minmax(50px,auto));
+  grid-column-gap: 20px;
+  grid-row-gap: 40px;
+  margin: 0 auto;
+  grid-template-areas: 
+  ". . ."
+  ". query ."
+  ". sprt_content ."
+  ;
+  grid-auto-rows: 100px;
+}
+
+/******* YOUTUBE SAMPLE RECOGN. GRID *******/
+#youtube_sample_grid{
+  display: grid;
+  grid-template-columns: 1fr 80% 1fr;
+  grid-template-rows: 60px repeat(3, minmax(50px,auto));
+  grid-column-gap: 20px;
+  grid-row-gap: 40px;
+  margin: 0 auto;
+  grid-template-areas: 
+  ". . ."
+  ". query ."
+  ". wrapper ."
+  ". sample_content ."
+  ;
+  grid-auto-rows: 100px;
+}
+
+@media screen and (min-width: 1440px){
+  #youtube_sample_grid{
+    display: grid;
+    grid-template-columns: 1fr 40% 40% 1fr;
+    grid-template-rows: 60px repeat(3, minmax(50px,auto));
+    grid-column-gap: 20px;
+    grid-row-gap: 40px;
+    margin: 0 auto;
+    grid-template-areas: 
+    ". . . ."
+    ". query query ."
+    ". wrapper wrapper ."
+    ". sample_content sample_content ."
+    ;
+    grid-auto-rows: 100px;
+  }
+}
+
+
+/******* AUDIO FILES GRID *******/
+
+@media screen and (min-width: 760px){
+  #sprt_content{
+    grid-area: sprt_content;
+    display: grid;
+    grid-template-columns: 8% repeat(2,minmax(20px,auto)) 8%;
+    grid-row: 10% repeat(10px,1fr) 10%;
+    grid-column-gap: 5px;
+    grid-template-areas: 
+    ". sprt_title sprt_title ."
+    ". checkArea audioPlay ."
+    ". checkArea audioPlay ."
+    ". checkArea audioPlay ."
+    ". checkArea audioPlay ."
+    ". checkArea audioPlay ."
+    ". . . ."
+    ;
+  }
+}
+
+
+/************** GRIDS AREAS **************/
+#wrapper { 
+  width: 1400px; 
+  height: 393px; 
+  margin: 0 auto;
+  grid-area: wrapper;
+  border-radius: 4px;
+  border-color: #505050;
+} 
+#home1 { 
+  width: 47.5%; 
+  height: 300px; 
+  float: left; 
+  margin-right: 5%;
+} 
+
+#home2 { 
+  width: 47.5%; 
+  height: 300px; 
+  float: left; 
+}
+
+.clear{
+  clear: both;
+}
+
+@media (max-width:1440px) {
+  #wrapper{
+    width: 100%;
+    height: auto;
+    margin:auto;
+    
+  }
+  #home1 {
+      width: 100%;
+      height: auto;
+      
+  }
+  #home2 {
+      width: 100%;
+      height: auto;
+      
+  }
+}
+
+query{
+  padding-top: 1rem;
+  padding-left: 10%;
+  padding-right: 10%;
+  grid-area: query;
+  
+  margin-left: 10%;
+  margin-right: 10%;
+  
+}
+original_content{
+  grid-area: original_content;
+}
+
+sample_content{
+  grid-area: sample_content;
+}
+
+
+checkArea{
+  grid-area: checkArea;
+  text-align: center;
+}
+
+sprt_title{
+  grid-area: sprt_title;
+}
+
+audioIcon{
+  grid-area: audioIcon;
+}
+
+audioPlay{
+  grid-area: audioPlay;
+}
+.estilo{
+  border-radius: 4px;
+  border-color: #bbbbbb;
+  border-style: solid;
+  border-width: 1px;
+  
+}
+
+.videoWrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0;
+}
+.videoWrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+
+

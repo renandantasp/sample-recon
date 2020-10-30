@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="container h-100">
+  <div class="row h-100">
+    <div class="col-12 my-auto">
+      <br> <br> <br> <br>
+      <h3 class="mb-3" align="left"> Sobre:</h2>
+      <p  class="mb-5" align="left"> Esse site é um dos trabalho realizados para a iniciação tecnológica <b>"Identificação automática de <i>sampling</i> utilizando separação de áudio e junção por similaridade"</b> pelo aluno <a href="https://github.com/renandantasp">Renan Dantas Pasquantonio</a>, com orientação do <a href="https://sites.google.com/view/midas-ufscar">Prof. Dr. Diego Furtado Silva</a> do grupo Mineração de Dados e Aplicações (<a href="https://sites.google.com/view/midas-ufscar">MIDAS</a>) da UFSCar.</p>   
+      <h3 class="mb-3" align="left"> Spleeter e separação de áudio</h2>
+      <p  class="mb-5" align="left"> O <a href="https://github.com/deezer/spleeter">Spleeter</a> é uma biblioteca de separação de áudio do Deezer que utiliza modelos pré-treinados escrita em Python e que utiliza a biblioteca <a href="https://www.tensorflow.org/">Tensorflow</a>. O modelo de 4 faixas foi o utilizado para testes por possuir um número de faixas ideal e um bom desempenho no conjunto de dados musdb18.</p>
+      <h3 class="mb-3" align="left"> SiMPLe e junção por similaridade</h3>
+      <p  class="mb-5" align="left"> Utilizando a matriz de similaridade gerada pelo <a href="https://www.cs.ucr.edu/~eamonn/MP_Music_ISMIR.pdf">SiMPLe</a>, é possível identificar as regiões com alta similaridade entre duas canções, e esse é um recurso muito poderoso para a tarefa de reconhecimento de <i>samples</i></p>
+      <h5 class="mb-3" align="left"> Para mais informações: </h2>
+      <p  class="mb-5" align="left"> <a href="url">Clique aqui</a> </p>
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}
+
+

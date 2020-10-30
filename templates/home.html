@@ -1,0 +1,95 @@
+{% extends "layout.html" %}
+{% block content %}
+ 
+<div class="container h-100">
+  <div class="row h-100">
+    <div class="col-12 my-auto">
+      <br> <br> <br> <br>
+
+      <h2 class="mb-3">Uma aplicação de separação de áudio e junção por similaridade!</h2>
+      <h4 class="mb-4">Separação de áudio </h5>
+      <p  class="mb-4">Usando Spleeter, a biblioteca do Deezer para separação de áudio, a canção é separada em 4 faixas (vocais, baixo, percussão, e outros acompanhamentos) e são produzidas todas combinações possíveis com as faixas.</p>
+      <p hidden id="reminder" class="text-center mb-3" style="color:#404040">Por favor aguarde, esse processo pode levar alguns minutos...</p>
+      <form action="yt_split" method="post">
+          <div class="input-group mb-3">
+              <input type="text" name="ytLink" class="form-control" placeholder="Insira um link do YouTube...">
+              <div class="input-group-append">
+                <button type="submit" class="btn btn-outline-secondary trigger">Submit</button>
+              </div>
+          </div>
+      </form>   
+      
+      <form action="wav_split" method="post" enctype="multipart/form-data">
+          <div class="input-group">
+            <div class="custom-file">
+               <input id="fileButton" type="file" name="file" accept="audio/wav" class="custom-file-input"> 
+               <span  id="fileText" class="custom-file-label"> Insira um arquivo wav... </span>
+            </div>
+            <div class="input-group-append">
+              <button type="submit" class="btn btn-outline-secondary trigger">Submit</button>
+            </div>
+          </div>
+      </form>
+      <br><br>
+
+      <h4 class="mb-4">Junção por similaridade e reconhecimento de samples </h5>
+      <p  class="mb-4"> Utilizando o SiMPLe, um algoritmo de junção por similaridade usando Matrix Profile, é verificado se duas faixas de músicas distintas possuem um alto grau de similaridade,
+         a existência e a identificação dessa similaridade por meio do SiMPLe pode ser executada em casos de sample.</p>
+      <p  align="center" class="mb-2"> Selecione as faixas que você quer checar a existência de sample.</p>
+      
+      <form align="center" action="yt_sampling" method="post">
+        <label class="px-3 checkbox-inline">
+          <input type="checkbox" name="vocal_box" value="true"> Vocais
+        </label>
+        <label class="px-3 checkbox-inline">
+          <input type="checkbox" name="bass_box"  value="true"> Baixo
+        </label>
+        <label class="px-3 mb-4 checkbox-inline">
+          <input type="checkbox" name="other_box" value="true"> Acompanhamentos
+        </label>
+        <p hidden id="reminder" class="text-center mb-3" style="color:#404040">Por favor aguarde, esse processo pode levar alguns minutos...</p>
+        <div class="input-group mb-3">
+            <input type="text" name="url_1" class="form-control" placeholder="Insira um link do YouTube...">
+            <input type="text" name="url_2" class="form-control" placeholder="Insira um link do YouTube...">
+            <div class="input-group-append">
+              <button type="submit" class="btn btn-outline-secondary trigger">Submit</button>
+            </div>
+        </div>
+      </form>  
+      
+      <form action="wav_sampling" method="post" enctype="multipart/form-data">
+        <div align="center">
+          <label class="px-3 checkbox-inline">
+            <input type="checkbox" name="vocal_box" value="true"> Vocais
+          </label>
+          <label class="px-3 checkbox-inline">
+            <input type="checkbox" name="bass_box"  value="true"> Baixo
+          </label>
+          <label class="px-3 mb-4 checkbox-inline">
+            <input type="checkbox" name="other_box" value="true"> Acompanhamentos
+          </label>
+        </div>
+        <div class="input-group">
+          <div class="custom-file">
+             <input id="fileButton" type="file" name="file1" accept="audio/wav" class="custom-file-input"> 
+             <span  id="fileText" class="custom-file-label">Insira um arquivo wav...</span>
+          </div>
+          <div class="custom-file">
+            <input id="fileButton" type="file" name="file2" accept="audio/wav" class="custom-file-input"> 
+            <span  id="fileText" class="custom-file-label">Insira um arquivo wav...</span>
+          </div>
+          <div class="input-group-append">
+            <button type="submit" class="btn btn-outline-secondary trigger">Submit</button>
+          </div>
+        </div>
+      </form>
+      <br>
+      
+      
+
+    </div>
+  </div> 
+</div>
+</body>
+    
+{% endblock %}

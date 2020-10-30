@@ -1,0 +1,106 @@
+{% extends "layout.html" %}
+{% block content %}
+<!--<body onload="update_sample_audio()"/>
+<body onload="reminder()"/>
+-->
+<body onload="update_sample_audio() "/>
+
+
+<div id="youtube_sample_grid">
+    <query>
+        <h4 class="text-center mb-3">Encontre outros samples:</h4>
+        <p align="center" class="mb-2"> Selecione as faixas que você quer checar a existência de sample.</p>
+        <form align="center" action="yt_sampling" method="post">
+            <label class="px-3 checkbox-inline">
+              <input type="checkbox" name="vocal_box" value="true"> Vocais
+            </label>
+            <label class="px-3 checkbox-inline">
+              <input type="checkbox" name="bass_box"  value="true"> Baixo
+            </label>
+            <label class="px-3 mb-3 checkbox-inline">
+              <input type="checkbox" name="other_box" value="true"> Acompanhamentos
+            </label>
+            <p hidden id="reminder_2" class="text-center mb-3" style="color:#404040">Por favor aguarde, esse processo pode levar alguns minutos...</p>
+            <div class="input-group mb-3">
+                <input type="text" name="url_1" class="form-control" placeholder="Insira um link do YouTube...">
+                <input type="text" name="url_2" class="form-control" placeholder="Insira um link do YouTube...">
+                <div class="input-group-append">
+                  <button type="submit" class="btn btn-outline-secondary trigger_2">Submit</button>
+                </div>
+            </div>
+        </form>
+        <form action="wav_sampling" method="post" enctype="multipart/form-data">
+        
+            <div class="input-group">
+              <div class="custom-file">
+                 <input id="fileButton" type="file" name="file" accept="audio/wav" class="custom-file-input"> 
+                 <span  id="fileText" class="custom-file-label">Insira um arquivo wav...</span>
+              </div>
+              <div class="custom-file">
+                <input id="fileButton" type="file" name="file" accept="audio/wav" class="custom-file-input"> 
+                <span  id="fileText" class="custom-file-label">Insira um arquivo wav...</span>
+              </div>
+              <div class="input-group-append">
+                <button type="submit" class="btn btn-outline-secondary trigger_1">Submit</button>
+              </div>
+            </div>
+          </form> 
+    </query>
+    <div id="wrapper"> 
+        <div id="home1">
+            <iframe width="700" height="393" src= {{ url_1 }} frameborder="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <h3 class="mt-3"> {{ video_title_1 }}</h2>
+        </div>
+        <div id="home2">
+            <iframe width="700" height="393" src= {{ url_2 }} frameborder="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <h3 class="mt-3"> {{ video_title_2 }}</h2>
+        </div>
+    </div>
+    <sample_content>
+        <br><br><br>
+        <p align="center"> {{ is_sampled }}</p>
+        <form align="center">
+            <label class="px-3 checkbox-inline">
+                <input id="full_track" type="radio" name="track" value="full_" checked> Original Audio
+            </label>
+            <label class="px-3 checkbox-inline">
+                <input id="solo_track" type="radio" name="track" value="ext_"> Solo track
+            </label>
+         </form>
+        <form align="center">
+            <label class="px-3 checkbox-inline">
+                <input id="vocal_stem" type="radio" name="stem" value="vocal" checked> Vocals
+            </label>
+            <label class="px-3 checkbox-inline">
+                <input id="bass_stem"  type="radio" name="stem" value="bass" > Bass
+            </label>
+            <label class="px-3 checkbox-inline">
+                <input id="other_stem" type="radio" name="stem" value="other"> Other
+            </label>
+         </form>
+        <div align="center"> 
+            <audio id="full_vocal" class="checkbox-inline" controls src="../static/ext/music1/vocals_full_crop.wav" style="display: none" class="row mb-3"></audio>
+            <audio id="full_vocal" class="checkbox-inline" controls src="../static/ext/music2/vocals_full_crop.wav" style="display: none" class="row mb-3"></audio>
+
+            <audio id="ext_vocal" class="checkbox-inline" controls src="../static/ext/music1/vocals_ext_crop.wav"  style="display: none" class="row mb-3"></audio>
+            <audio id="ext_vocal" class="checkbox-inline" controls src="../static/ext/music2/vocals_ext_crop.wav"  style="display: none" class="row mb-3"></audio>
+
+            <audio id="full_bass" class="checkbox-inline" controls src="../static/ext/music1/bass_full_crop.wav"  style="display: none" class="row mb-3"></audio>
+            <audio id="full_bass" class="checkbox-inline" controls src="../static/ext/music2/bass_full_crop.wav"  style="display: none" class="row mb-3"></audio>
+
+            <audio id="ext_bass" class="checkbox-inline" controls src="../static/ext/music1/bass_ext_crop.wav"   style="display: none" class="row mb-3"></audio>
+            <audio id="ext_bass" class="checkbox-inline" controls src="../static/ext/music2/bass_ext_crop.wav"   style="display: none" class="row mb-3"></audio>
+
+            <audio id="full_other" class="checkbox-inline" controls src="../static/ext/music1/other_full_crop.wav" style="display: none" class="row mb-3"></audio>
+            <audio id="full_other" class="checkbox-inline" controls src="../static/ext/music2/other_full_crop.wav" style="display: none" class="row mb-3"></audio>
+
+            <audio id="ext_other" class="checkbox-inline" controls src="../static/ext/music1/other_ext_crop.wav"  style="display: none" class="row mb-3"></audio>
+            <audio id="ext_other" class="checkbox-inline" controls src="../static/ext/music2/other_ext_crop.wav"  style="display: none" class="row mb-3"></audio>
+
+        </div>
+    </sample_content>
+</div>
+
+
+
+{% endblock %}
